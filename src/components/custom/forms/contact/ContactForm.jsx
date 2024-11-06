@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react"
 
-export default function ContactPage() {
+export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -30,7 +30,7 @@ export default function ContactPage() {
 
       if (res.ok) {
         setStatus('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', phone: '', email: '', message: '' });
       } else {
         setStatus('Failed to send message.');
       }
