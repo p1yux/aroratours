@@ -31,7 +31,7 @@ export default function Example() {
 
   return (
     <Disclosure as="nav" className={`sticky top-0 z-50 shadow-xl transition-colors duration-300 ${
-      isScrolled ? 'bg-blue-600/80 backdrop-blur-sm' : 'bg-blue-600'
+      isScrolled ? 'bg-[#272343]/80 backdrop-blur-sm' : 'bg-[#272343]'
     }`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 sm:h-18 lg:h-20 items-center justify-between">
@@ -55,10 +55,10 @@ export default function Example() {
                   height={150}
                   priority
                 />
-                <span className="text-white text-lg sm:text-xl lg:text-2xl font-bold ml-3 max-[866px]:hidden">
+                <span className="text-white text-lg sm:text-xl lg:text-2xl font-bold ml-3 max-[866px]:hidden font-['Poppins'] tracking-wide leading-snug">
                   Arora Tour and Travels
                 </span>
-                <span className="text-white text-base font-bold ml-2 min-[867px]:hidden">
+                <span className="text-white text-base font-bold ml-2 min-[867px]:hidden font-['Poppins'] tracking-wide leading-snug">
                   Arora Tour and Travels
                 </span>
               </div>
