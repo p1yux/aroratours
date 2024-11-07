@@ -2,9 +2,9 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'About Us', href: '#about-us', current: false },
-  { name: 'Contact Us', href: '#contact-us', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'About Us', href: '/contact', current: false },
+  { name: 'Contact Us', href: '/contact#contact-us', current: false },
   { name: 'Trips', href: '#', current: false },
 ]
 
