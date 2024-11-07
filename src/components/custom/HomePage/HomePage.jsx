@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import hawamehal from '@/assets/images/hawamehal.jpeg'
 import kedarnath from '@/assets/images/kedarnath.jpeg'
 import mountain from '@/assets/images/mountain.jpeg'
@@ -31,10 +32,32 @@ const slideData = [
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  }
+
+  const staggerChildren = {
+    animate: {
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  }
+
+
+
   return (
     <div className="bg-white">
       {/* Header */}
-      <header className="relative">
+      <motion.header 
+        className="relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        id="header"
+      >
         <div className="flex items-center justify-center">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="overflow-hidden rounded-lg shadow-lg relative">
@@ -75,11 +98,11 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       <main className="isolate">
         {/* Hero section */}
-        <div className="relative isolate -z-10">
+        <div className="relative isolate -z-10" id="hero">
           <svg
             aria-hidden="true"
             className="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-gray-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]"
@@ -119,17 +142,39 @@ export default function HomePage() {
           <div className="overflow-hidden">
             <div className="mx-auto max-w-7xl px-6 pb-16 pt-16 sm:pt-32 lg:px-8 lg:pt-20">
               <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-                <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
-                  <h1 className="text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
+                <motion.div 
+                  className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <motion.h1 
+                    className="text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl"
+                    {...fadeInUp}
+                  >
                     Tour Operators and Travel Agents
-                  </h1>
-                  <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
+                  </motion.h1>
+                  <motion.p 
+                    className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                  >
                     Discover the beauty and diversity of India with <strong>Arora Tours and travels</strong>, your trusted <strong>travel agents in Delhi</strong> for offering unforgettable travel experiences. Be it the majestic peaks of Mountains, our packages cover the length and breadth of this incredible country. If you are seeking a cultural immersion in Rajasthan's royal palaces, we have a tour package for you. If you want a spiritual journey, we have the perfect itinerary for you. 
                     At Arora Tours and travels, we prioritize your comfort and satisfaction. Being one of the top travel agents in Delhi, India, our expert team crafts each tour package with attention to detail, ensuring a seamless and enriching travel experience. Enjoy luxury accommodations, tours, and personalized services that make your trip truly special. Choose Arora Tours and travels for your next adventure and let us turn your travel dreams into reality. 
-                  </p>
-                </div>
-                <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
-                  <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
+                  </motion.p>
+                </motion.div>
+
+                <motion.div 
+                  className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0"
+                  variants={staggerChildren}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <motion.div 
+                    className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80"
+                    variants={fadeInUp}
+                  >
                     <div className="relative">
                       <div className="aspect-[2/3] w-full relative">
                         <Image
@@ -141,8 +186,12 @@ export default function HomePage() {
                       </div>
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
-                  </div>
-                  <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36"
+                    variants={fadeInUp}
+                  >
                     <div className="relative">
                       <div className="aspect-[2/3] w-full relative">
                         <Image
@@ -165,8 +214,12 @@ export default function HomePage() {
                       </div>
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
-                  </div>
-                  <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="w-44 flex-none space-y-8 pt-32 sm:pt-0"
+                    variants={fadeInUp}
+                  >
                     <div className="relative">
                       <div className="aspect-[2/3] w-full relative">
                         <Image
@@ -189,25 +242,110 @@ export default function HomePage() {
                       </div>
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Image section */}
-        <div className="mt-2 sm:mt-2 xl:mx-auto xl:max-w-7xl xl:px-8">
+        <motion.div 
+          className="mt-2 sm:mt-2 xl:mx-auto xl:max-w-7xl xl:px-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          id="image-section"
+        >
           <Image
             alt="scenery"
             src={scenery}
             className="aspect-[5/2] w-full object-cover xl:rounded-3xl"
-
           />
-        </div>
-      </main>
+        </motion.div>
 
-      
+        {/* Destination section */}
+        <motion.div 
+          className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          id="destination-section"
+        >
+          <motion.div
+            id="destination-card"
+            className="h-[2px] bg-gray-600 mx-auto mb-8"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.5 }}
+            style={{ transformOrigin: 'left' }}
+          />
+          <motion.h1 
+            className="text-5xl font-extrabold text-center mb-8 text-blue-600"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            <span id="destination-cards" className="text-black">
+              Packages for You
+            </span>
+          </motion.h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
+            {[
+              {
+                image: haridwar,
+                destination: "Haridwar",
+                about: "A city in Uttarakhand, India, known for its temples and ghats where pilgrims bathe to relieve themselves of their sins.",
+              },
+              {
+                image: ladakh,
+                destination: "Ladakh",
+                about: "A region in the Indian state of Jammu and Kashmir known for its mountainous landscapes and Buddhist culture.",
+              },
+              {
+                image: scenery,
+                destination: "Scenic Place",
+                about: "A beautiful scenic place to relax and enjoy nature.",
+              },
+              {
+                image: haridwar,
+                destination: "Another Destination",
+                about: "A wonderful place to visit with lots of attractions.",
+              },
+              {
+                image: ladakh,
+                destination: "Yet Another Destination",
+                about: "A great destination for adventure and exploration.",
+              },
+            ].map((card, index) => (
+              <motion.div 
+                key={index} 
+                className="bg-white rounded-lg shadow-lg overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="relative">
+                  <Image
+                    src={card.image}
+                    alt={card.destination}
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{card.destination}</h3>
+                  <p className="text-gray-600 mb-4">{card.about}</p>
+                  <button 
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300"
+                    onClick={() => window.location.href = '/contact'}
+                  >
+                    Consult Now
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </main>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import React from 'react';
 export default function AboutUs() {
   return (
     <div style={{ padding: '2em', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>
-      <h1 className='text-2xl font-bold'>About Us</h1>
+      <h1 className='text-2xl font-bold'>Consult Now</h1>
       <br />
       
       <h2 className='font-bold'>Working Hours - (8:00 AM – 10:00 PM. Monday – Saturday)</h2>
