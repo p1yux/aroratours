@@ -8,7 +8,7 @@ import logo from '@/assets/images/logo.png'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'About Us', href: '/#footer-section', current: false },
+  { name: 'About Us', href: '/about', current: false },
   { name: 'Contact Us', href: '/contact', current: false },
   { name: 'Trips', href: '/#destination-cards', current: false },
   { name: 'Bookings', href: '/contact', current: false },
