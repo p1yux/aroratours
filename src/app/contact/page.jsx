@@ -1,5 +1,5 @@
 "use client"
-import { useEffect } from "react"
+import { useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 import ContactForm from "@/components/custom/forms/contact/ContactForm"
@@ -9,7 +9,8 @@ import FooterNav from "@/components/custom/navbars/footerNav/FooterNav"
 import Image from "next/image"
 import scenery from "@/assets/images/scenery.jpg"
 
-export default function Contact() {
+// Separate component for scroll handling
+function ScrollHandler() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
@@ -22,9 +23,16 @@ export default function Contact() {
     }
   }, [searchParams])
 
+  return null
+}
+
+export default function Contact() {
   return (
     <>
       <NavBar />
+      <Suspense fallback={null}>
+        <ScrollHandler />
+      </Suspense>
       <div className="relative w-full h-full p-6 flex flex-col items-center justify-center bg-gray-100">
         <Image
           src={scenery}
