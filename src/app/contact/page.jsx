@@ -37,9 +37,8 @@ export default function Contact() {
         <Image
           src={scenery}
           alt="Contact Background"
-          layout="fill"
-          objectFit="cover"
-          className="absolute inset-0 z-0 opacity-20"
+          fill
+          className="absolute inset-0 z-0 opacity-20 object-cover"
         />
         <motion.div
           className="relative w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-6 z-10"
