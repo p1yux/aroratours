@@ -2,12 +2,14 @@
 const nextConfig = {
   images: {
     domains: ['images.unsplash.com', 'tailwindui.com', 'via.placeholder.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'tailwindui.com',
+      },
+    ],
   },
-}
-
-
-
-module.exports = {
   reactStrictMode: true,
-  ...nextConfig
 };
+
+module.exports = nextConfig;
