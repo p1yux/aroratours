@@ -7,7 +7,7 @@ const navigation = [
     title: 'Quick Links',
     links: [
       { title: 'Home', href: '/' },
-      { title: 'About Us', href: '/#footer-section' },
+      { title: 'About Us', href: '/about' },
       { title: 'Contact Us', href: '/contact' },
       { title: 'Trips', href: '/' },
       { title: 'Bookings', href: '/contact' },
